@@ -24,6 +24,8 @@ Go to “Terminal” tab and Click “bash” on the right-side of Terminal tab 
 
 5. ``pip3 freeze > requirements.txt``
 
+6. ``pip3 install requirements.txt`` (if changes branch)
+
 Initialize Django Project
 
 1. Go to “Terminal” 
@@ -65,3 +67,45 @@ db.sqlite3
 db.sqlite3-journal
 media
 ```
+
+
+
+!! *** MUST DO: (3) ``source venv/bin/activate`` first before doing below steps *** !!
+After Initialize and Create Project
+for develop must do below steps:
+
+1. Go to “Terminal”
+
+2. ``python3 manage.py runserver`` (to run server for testing MVT)
+
+(Explicate) 2. ``python3 manage.py runserver`` 0.0.0.0:[port_number] (port_number is optional or 8000 by default)
+
+3. If Database is not created yet, please run below command 
+``python3 manage.py migrate``
+
+4. Or Database has any changes, please run below command 
+``python3 manage.py makemigrations``
+
+
+
+Install with Tailwind CSS and PostCSS 
+(CDN) Link : https://medium.com/@winstonmhango23/creating-views-and-templates-for-a-django-and-tailwind-css-e-commerce-web-application-part-2-8c964b9364e8
+Link Config tailwind official : https://tailwindcss.com/docs/installation/play-cdn
+
+
+To Setting ENV for Django Project
+
+Link : https://tecadmin.net/how-to-setup-environment-variables-in-django/
+
+To Setting .gitignore to avoid uoload .ENV
+1. ``echo ".env" >> .gitignore ``
+
+
+
+To learning Django project 
+
+Step #1 : https://medium.com/@brianmayrose/django-step-1-716fe0fb55a
+Step #2 : https://medium.com/@brianmayrose/django-step-2-ce51cb39ee2a
+Step #3 : https://medium.com/@brianmayrose/django-step-3-43812add68f3
+Step #4 : https://medium.com/@brianmayrose/django-step-4-e19803a9afa7
+Step #5 : https://medium.com/@brianmayrose/django-step-5-3518252d7ade

@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+
 from pathlib import Path
+from decouple import config, Csv
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wmg1e+t5ht(fx_8@1&9@f$&ai!l#_!6es_#gyu+@!9-4v9(knh'
+SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-wmg1e+t5ht(fx_8@1&9@f$&ai!l#_!6es_#gyu+@!9-4v9(knh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ecommerce',
+    'display_1.apps.Display1Config',
+    # 'general.apps.Display1Config',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +88,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DATABASE_URL').split('/')[-1],
+#         'USER': config('DATABASE_URL').split('//')[1].split(':')[0],
+#         'PASSWORD': config('DATABASE_URL').split(':')[2].split('@')[0],
+#         'HOST': config('DATABASE_URL').split('@')[1].split(':')[0],
+#         'PORT': config('DATABASE_URL').split(':')[-1],
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -115,7 +134,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'item/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
