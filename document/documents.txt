@@ -1,0 +1,67 @@
+We need to create Virtual Environment for our Django or other Python projects development following steps:
+
+1. Create new dir folder for projects
+
+2. Create Virtual Environment
+``python3 -m venv venv``
+**python3 -m venv [directory name, usually ‘venv’ or ‘env’]**
+
+3. Activate Virtual Environment
+``source venv/bin/activate``
+
+3.1. Deactivate Virtual Environment
+``deactivate``
+
+
+*** MUST DO: (3) ``source venv/bin/activate`` first before doing below steps ***
+
+Install required package using Python pip *with (venv)*
+
+Go to “Terminal” tab and Click “bash” on the right-side of Terminal tab and make sure that your VENV is activate in VSCode Terminal 
+[prefix (venv)]*If it not activate please following the instruction on previous slide
+
+4. ``pip3 install django djangorestframework markdown django-filter django-cors-headers``
+
+5. ``pip3 freeze > requirements.txt``
+
+Initialize Django Project
+
+1. Go to “Terminal” 
+
+2. ``django-admin startproject cn334 ./``
+
+3. Setting up Django Project
+``python3 manage.py startapp general`` or 
+``python3 manage.py startapp [app name]``
+
+
+Test run our Django Project
+
+1. Go to “Terminal”
+
+2. RUN ``python3 manage.py runserver``
+
+3. Then open your web browser (Edge, Chrome, Firefox, Safari or etc) and go to url http://127.0.0.1:8000/
+
+
+Create .gitignore file
+
+1. Go to “Terminal”
+
+2. ``touch .gitignore``
+
+3. Open .gitignore file and add below code
+```
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+.env
+venv/
+db.sqlite3
+db.sqlite3-journal
+media
+```
